@@ -28,6 +28,14 @@ yarn dev
 The endpoint is set to the AWS server built from [groupon_test_server](https://github.com/markfarl/groupon_test_server) to build locall you can uncomment the URL in [main/src/constants/api.ts](https://github.com/markfarl/groupon_test/blob/main/src/constants/api.ts)
 
 ## Design
+
+To start the design I first built out 3 screens in Photoshop, I always like to start here, as I can test different colour schemes.
+![screen 1](https://github.com/markfarl/groupon_test/tree/main/public/screen1.png?raw=true)
+![screen 2](https://github.com/markfarl/groupon_test/tree/main/public/screen2.png?raw=true)
+I wanted a dark mode too so I tested this with some early mockups
+
+![screen 3](https://github.com/markfarl/groupon_test/tree/main/public/screen1.png?raw=true)
+
 ## Development
 ### Tech
 ### Search 
