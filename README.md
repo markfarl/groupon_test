@@ -1,50 +1,39 @@
-# React + TypeScript + Vite
+# Mark Farrell Groupon Excerise
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This excerise consists of two repos
 
-Currently, two official plugins are available:
+Groupon FE built in react 
+and 
+Groupon_serve which is hosted on AWS instance 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [github.com/markfarl/groupon_test](https://github.com/markfarl/groupon_test)
+- [https://github.com/markfarl/groupon_test_server](https://github.com/markfarl/groupon_test_server)
 
-## Expanding the ESLint configuration
+Live version can be seen here on github pages 
+[github.com/markfarl/groupon_test](https://github.com/markfarl/groupon_test)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installation
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Ton install locally please follow these 
+```sh
+yarn
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+To start development version.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```sh
+yarn dev
 ```
+**NOTE**
+The endpoint is set to the AWS server built from [groupon_test_server](https://github.com/markfarl/groupon_test_server) to build locall you can uncomment the URL in [main/src/constants/api.ts](https://github.com/markfarl/groupon_test/blob/main/src/constants/api.ts)
+
+## Design
+## Development
+### Tech
+### Search 
+### Debouncing 
+### Dark mode
+## Testing
+
+
+

@@ -21,7 +21,7 @@ export default function Header({ callback, typeCallback }: HeaderParam) {
 
 			</div>
 			<div className="md:mr-5">
-				<SearchBar callback={callback} onTypeCallback={typeCallback} />
+				<SearchBar callback={callback} onTypeCallback={typeCallback}/>
 			</div>
 
 			<div className="md:mx-auto w-[85px] pt-[5px]">

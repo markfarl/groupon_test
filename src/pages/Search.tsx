@@ -8,6 +8,7 @@ import useDebounce from "@/hooks/useDebounce"
 import { linkEffectSmall } from "@/constants/style"
 import SelectBox from "@/components/SelectBox"
 import Header from "@/components/Header"
+import Loading from "@/components/Loading"
 
 export default function Search() {
   const [isLoading, setIsLoading] = useState(true)
@@ -32,7 +33,7 @@ export default function Search() {
       setSearchNavData({
         ...searchNavData,
         searchTerm: searchTerm || "",
-        history: [...searchNavData.history, searchNavData.searchTerm],
+        history: searchNavData.searchTerm ? [...searchNavData.history, searchNavData.searchTerm] : searchNavData.history,
         limit
       })
     })
@@ -71,10 +72,19 @@ export default function Search() {
   useEffect(() => {
     fetchSearch()
   }, [searchTerm, limit])
+  
+  useEffect(() => {
+    setIsLoading(true)
+  }, [searchVal])
 
   return (
-    <div className="min-h-dvh md:pt-5 bg-search-light dark:bg-search-dark">
-      <Header callback={navigateSearchHandle} typeCallback={setSearchVal} />
+    <div className="relative min-h-dvh md:pt-5 bg-search-light dark:bg-search-dark">
+      <Header callback={navigateSearchHandle} typeCallback={setSearchVal}  />
+      {isLoading &&
+            <div className="absolute left-1/2 md:top-[120px] top-[190px] z-50">
+              <Loading />
+            </div>
+          }
       <main className={`h-full dark:dark:bg-search-dark bg-white ${isLoading ? "opacity-10" : ""}`}>
         <div className="grid sm:grid-cols-[auto_300px] md:mx-auto max-w-screen-xl p-1 md:pl-5 min-h-[50px]">
           <p className="pt-3"><b>{searchResults.total > 0 ? searchResults.total : "No"} Result{searchResults.total !== 1 ? "s" : ""}</b></p>

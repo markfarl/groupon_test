@@ -33,7 +33,7 @@ export default function Home() {
         <SearchBar callback={navigateSearchHandle} />
       </div>
 
-      <div className="mx-auto md:mt-10 w-[85px]">
+      <div className="mx-auto mt-5 md:mt-10 w-[85px]">
         <DarkMode />
       </div>
 

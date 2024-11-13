@@ -26,9 +26,15 @@ body, #root{
   display: inline-block;
 }
 
-.results > a:nth-child(odd) > div{
+.results > a:nth-child(odd) > div, .results > a:nth-child(even):hover > div{
   background: #f3f3f3;
 }
-.dark .results > a:nth-child(odd) > div{
+.results > a:nth-child(odd):hover > div{
+  background: #ffffff;
+}
+.dark .results > a:nth-child(odd) > div, .dark .results > a:nth-child(even):hover > div{
   background: #232323;
+}
+.dark .results > a:nth-child(odd):hover > div{
+  background: #111111;
 }
