@@ -10,7 +10,7 @@ export default function DarkMode() {
       setDark(true)
     if(dark)
       document.body.classList.value = "dark"
-  }, [])
+  }, [dark])
 
   const handleDarkMode = () => {
     // Set local storage
