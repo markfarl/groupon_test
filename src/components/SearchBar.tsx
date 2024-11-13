@@ -30,7 +30,8 @@ export default function SearchBar({ callback, onTypeCallback }: CallbackSearchTy
       </div>
       <button type="submit" onClick={(e) => {
         e.preventDefault()
-        callback(searchNavData.searchTerm)
+        if(searchNavData.searchTerm)
+          callback(searchNavData.searchTerm)
       }} />
     </form>
   )

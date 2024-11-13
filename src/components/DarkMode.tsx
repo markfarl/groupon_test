@@ -1,19 +1,22 @@
+import { linkEffect } from "@/constants/style"
 import { useEffect, useState } from "react"
 
 export default function DarkMode() {
-  const linkEffect = "transform transition duration-200 hover:scale-105 hover:animate-pulse"
-  const [dark, setDark] = useState(false)
+
+  const [dark, setDark] = useState<boolean>(localStorage.getItem("darkmode") === "true")
 
   useEffect(() => {
-    if (document.body.classList.value === "dark") {
+    if (document.body.classList.value === "dark") 
       setDark(true)
-    }
+    if(dark)
+      document.body.classList.value = "dark"
   }, [])
 
   const handleDarkMode = () => {
+    // Set local storage
+    localStorage.setItem("darkmode", `${!dark}`)
     setDark(!dark)
     document.body.classList.toggle("dark")
-    console.log("dedede")
   }
   return (
     <>

@@ -3,16 +3,16 @@ import logoDark from "@/assets/logo-dark.png"
 import DarkMode from "@/components/DarkMode"
 import SearchBar from "@/components/SearchBar"
 import navigateSearch from "@/libs/navigateSearch"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useSearchNav } from "@/contexts/SearchNavContext"
+import { linkEffectSmall } from "@/constants/style"
 
 export default function Home() {
   const { searchNavData, setSearchNavData } = useSearchNav()
   const navigate = useNavigate();
   function navigateSearchHandle(searchTerm: string) {
     setSearchNavData({
-      ...searchNavData,
-      history: [...searchNavData.history, searchNavData.searchTerm]
+      ...searchNavData
     })
     navigate(navigateSearch({
       ...searchNavData,
@@ -30,18 +30,29 @@ export default function Home() {
       </header>
 
       <div className="mx-auto max-w-[400px]">
-
         <SearchBar callback={navigateSearchHandle} />
       </div>
 
       <div className="mx-auto md:mt-10 w-[85px]">
         <DarkMode />
       </div>
-      <div className="p-5">
-        {searchNavData.history.length > 0 && <b>Search History</b>}
+
+      <div className="results dark:results-dark">
+        {searchNavData.history.length > 0 &&
+          <div className="min-h-[50px]">
+            <div className="md:mx-auto max-w-screen-xl  p-5 pt-3 pb-0">
+              <b>Search History</b>
+            </div>
+          </div>}
         {searchNavData.history.map(item => {
           return (
-            <p>{item}</p>
+            <Link to={`search/${item}/10`}>
+              <div className={`${linkEffectSmall} min-h-[50px]`}>
+                <div className="md:mx-auto max-w-screen-xl  p-5 pt-3 pb-0">
+                  <p>{item}</p>
+                </div>
+              </div>
+            </Link>
           )
         })}
       </div>

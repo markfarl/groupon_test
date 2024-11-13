@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react"
 
 const searchNavDefaults: searchNavDataType  = {
   searchTerm: "",
-  limit: 10,
+  limit: 20,
   history: []
 }
 const SearchNavContext = createContext<SearchNaVProviderType>({
@@ -24,5 +24,4 @@ function SearchNavProvider({ children }: { children: JSX.Element }) {
   )
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export { SearchNavProvider, useSearchNav }
