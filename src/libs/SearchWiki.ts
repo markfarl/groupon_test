@@ -9,7 +9,11 @@ class SearchWiki {
 
   async getSearchResult({ term, limit = 10 }: GetSearchResults): Promise<ReturnSearchResults> {
     const url = `${this.url}&searchTerm=${term}&limit=${limit}`
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "true",
+      })
+    });
     if (!response.ok) {
       console.error(`Response status: ${response.status}`);
     }
