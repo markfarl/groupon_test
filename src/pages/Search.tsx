@@ -22,11 +22,11 @@ export default function Search() {
     limit: limit ? Number(limit) : 20
   })
 
-  const fetchSearch = useCallback(async (searchVal?: string) => {
+  const fetchSearch = useCallback(async ({ searchVal, limitchange }: {searchVal?: string, limitchange?: number }) => {
     setIsLoading(true)
     const apiParam = {
       term: searchVal ? searchVal : searchTerm ? searchTerm : searchNavData.searchTerm,
-      limit
+      limit: limitchange ? limitchange : searchNavData.limit
     }
     await searchWiki.getSearchResult(apiParam).then(data => {
       setSearchNavData({
@@ -38,9 +38,9 @@ export default function Search() {
       setSearchResults(data)
     })
     setIsLoading(false)
-
   }, [])
 
+  // When user clicks submit enter on search form
   function navigateSearchHandle(searchVal: string) {
     setIsLoading(true)
     navigate(navigateSearch({
@@ -49,6 +49,8 @@ export default function Search() {
       limit: limit,
     }))
   }
+
+  // When User changes limit per page
   function navigateLimit(limit: string) {
     const navProps = {
       ...searchNavData,
@@ -56,12 +58,14 @@ export default function Search() {
     }
     setSearchNavData(navProps)
     navigate(navigateSearch(navProps))
+    fetchSearch({searchVal: searchTerm, limitchange: Number(limit) })
   }
 
+  // When user types input debounce search
   useEffect(() => {
     if (searchVal) {
       setIsLoading(true)
-      fetchSearch(searchVal)
+      fetchSearch({searchVal, limitchange: limit})
       const navProps = {
         ...searchNavData,
         searchTerm: searchVal,
@@ -71,10 +75,12 @@ export default function Search() {
     }
   }, [debounceValue]);
 
+  // when user lands
   useEffect(() => {
-    fetchSearch()
-  }, [searchTerm, limit])
+    fetchSearch({searchVal: searchTerm, limitchange: limit})
+  }, [searchTerm])
 
+  // When user types show loading
   useEffect(() => {
     setIsLoading(true)
   }, [searchVal])
