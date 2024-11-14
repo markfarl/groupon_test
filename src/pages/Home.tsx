@@ -16,8 +16,7 @@ export default function Home() {
     })
     navigate(navigateSearch({
       ...searchNavData,
-      searchTerm,
-      history: [...searchNavData.history, searchNavData.searchTerm]
+      searchTerm
     }))
   }
 

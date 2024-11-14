@@ -26,7 +26,7 @@ export default function DarkMode() {
       >
       </div>
       <div
-        className={`${linkEffect} mx-auto colorSchemeSquare bg-black ${dark ? "border-border-line" : "border-none"} `}
+        className={`${linkEffect} colorSchemeSquare bg-black ${dark ? "border-border-line" : "border-none"} `}
         onClick={handleDarkMode}
       >
       </div>
