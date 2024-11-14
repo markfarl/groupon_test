@@ -1,4 +1,4 @@
-import { fireEvent, render, RenderResult, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import SearchBar from './SearchBar'
 import { MemoryRouter } from 'react-router-dom'
@@ -20,14 +20,13 @@ const HeaderParam = {
 	onTypeCallback: vi.fn() as (arg0: string) => void,
 }
 
-let renderBody: RenderResult<typeof import("@testing-library/dom/types/queries"), HTMLElement, HTMLElement>
 
 describe('Header tests', () => {
 	afterEach(() => {
 		vi.restoreAllMocks()
 	})
 	beforeEach(() => {
-		renderBody = render(<SearchBar {...HeaderParam} />, {
+		render(<SearchBar {...HeaderParam} />, {
 		 wrapper: ({children}) => (
 			 <MemoryRouter initialEntries={["/"]}>
 				 {children}

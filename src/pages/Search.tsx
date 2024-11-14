@@ -15,14 +15,14 @@ export default function Search() {
   const [searchVal, setSearchVal] = useState("")
   const { searchTerm, limit } = useParams<string>()
   const navigate = useNavigate()
-  const debounceValue = useDebounce(searchVal, 2000)
+  const debounceValue = useDebounce(searchVal, 1200)
   const { searchNavData, setSearchNavData } = useSearchNav()
   const [searchResults, setSearchResults] = useState<ReturnSearchResults>({
     total: 0,
     limit: limit ? Number(limit) : 20
   })
 
-  const fetchSearch = useCallback(async ({ searchVal, limitchange }: {searchVal?: string, limitchange?: number }) => {
+  const fetchSearch = useCallback(async ({ searchVal, limitchange }: { searchVal?: string, limitchange?: number }) => {
     setIsLoading(true)
     const apiParam = {
       term: searchVal ? searchVal : searchTerm ? searchTerm : searchNavData.searchTerm,
@@ -33,7 +33,7 @@ export default function Search() {
         ...searchNavData,
         searchTerm: searchVal || searchTerm || "",
         history: searchNavData.searchTerm ? [...searchNavData.history, searchNavData.searchTerm] : searchNavData.history,
-        limit
+        limit: Number(limit)
       })
       setSearchResults(data)
     })
@@ -42,12 +42,14 @@ export default function Search() {
 
   // When user clicks submit enter on search form
   function navigateSearchHandle(searchVal: string) {
-    setIsLoading(true)
-    navigate(navigateSearch({
-      ...searchNavData,
-      searchTerm: searchVal,
-      limit: limit,
-    }))
+    if (searchVal !== searchTerm) {
+      setIsLoading(true)
+      navigate(navigateSearch({
+        ...searchNavData,
+        searchTerm: searchVal,
+        limit: Number(limit),
+      }))
+    }
   }
 
   // When User changes limit per page
@@ -58,18 +60,18 @@ export default function Search() {
     }
     setSearchNavData(navProps)
     navigate(navigateSearch(navProps))
-    fetchSearch({searchVal: searchTerm, limitchange: Number(limit) })
+    fetchSearch({ searchVal: searchTerm, limitchange: Number(limit) })
   }
 
   // When user types input debounce search
   useEffect(() => {
     if (searchVal) {
       setIsLoading(true)
-      fetchSearch({searchVal, limitchange: limit})
+      fetchSearch({ searchVal, limitchange:  Number(limit) })
       const navProps = {
         ...searchNavData,
         searchTerm: searchVal,
-        limit: limit,
+        limit: Number(limit),
       }
       navigate(navigateSearch(navProps))
     }
@@ -77,7 +79,7 @@ export default function Search() {
 
   // when user lands
   useEffect(() => {
-    fetchSearch({searchVal: searchTerm, limitchange: limit})
+    fetchSearch({ searchVal: searchTerm, limitchange: Number(limit) })
   }, [searchTerm])
 
   // When user types show loading

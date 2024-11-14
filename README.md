@@ -1,13 +1,13 @@
-# Mark Farrell Groupon Excerise
+# Mark Farrell Groupon Excercise
 
 Live version can be seen here on github pages 
 [github.com/markfarl/groupon_test](https://github.com/markfarl/groupon_test)
 
-This excerise consists of two repos
+This Excercise consists of two repos
 
-Groupon FE built in react 
+Groupon Frontend application built in React 
 and 
-Groupon_serve which is hosted on AWS instance 
+Groupon_serve built in node.js which is hosted on AWS instance from a docker image.
 
 - [github.com/markfarl/groupon_test](https://github.com/markfarl/groupon_test)
 - [https://github.com/markfarl/groupon_test_server](https://github.com/markfarl/groupon_test_server)
@@ -41,24 +41,29 @@ I wanted a dark mode too so I tested this with some early mockups
 ## Development
 ### Tech
 
-My Tech stack I decided was:
+The Tech choices I decided are:
 
-React
-Typscript
-Vite which has super quick hotloading and compile
-Tailwind CSS - which probably has no advantage, I will probaly use vanilla CSS going forward
-Vitest and React testing Library 
+- React
+- Typscript
+- Vite - has super quick hotloading and compile
+- Tailwind CSS - Good for quick t
+- Vitest and React testing Library 
 
 ### Search
-Search component works from context and will update based on URL, a single component does both pages, but deboucing is only active on the search page and not the front page.
+Search component works from context and will update based on URL, changes to the input box, changes to the limit option.
+A single component does both pages, but debouncing is only active on the search page and not the front page.
 
 ### Debouncing 
-
+The debounicng logic is set on a custom hook and called from the main `src/pages/Search.tsx` page
 
 ### Dark mode
-
+Dark mode is set by changing `<body>` class, this is a tailwind convention. The choice is saved in local storage 
 
 ## Testing
+Testing is done with Vitest and React testing Library, it has a focus on what user interactions are expected on each component as well as testing logic.
+
+## CI/CD
+I have setup some github actions to run the unit tests and the page is hosted on github pages
 
 
 
