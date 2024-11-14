@@ -3,7 +3,6 @@ import userEvent from '@testing-library/user-event'
 import SearchBar from './SearchBar'
 import { MemoryRouter } from 'react-router-dom'
 
-
 vi.mock('@/contexts/SearchNavContext', () => ({
 	useSearchNav: () => {
 		return {
@@ -15,13 +14,15 @@ vi.mock('@/contexts/SearchNavContext', () => ({
 	}
 }))
 
+
+
 const HeaderParam = {
 	callback: vi.fn() as (arg0: string) => void,
 	onTypeCallback: vi.fn() as (arg0: string) => void,
 }
 
 
-describe('Header tests', () => {
+describe('Searchbar tests', () => {
 	afterEach(() => {
 		vi.restoreAllMocks()
 	})

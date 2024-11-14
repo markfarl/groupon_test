@@ -53,6 +53,9 @@ The Tech choices I decided upon are:
 Search component works from context and will update based on URL, changes to the input box, changes to the limit option.
 A single component does both pages, but debouncing is only active on the search page and not the front page.
 
+### Search History
+Search History is recorded and displayed at the fornt page
+
 ### Debouncing 
 The debouncing  logic is set on a custom hook and called from the main `src/pages/Search.tsx` page.
 
