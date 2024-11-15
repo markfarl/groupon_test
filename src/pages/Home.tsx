@@ -43,9 +43,9 @@ export default function Home() {
               <b>Search History</b>
             </div>
           </div>}
-        {searchNavData.history.map(item => {
+        {searchNavData.history.map((item, idx) => {
           return (
-            <Link to={`search/${item}/10`}>
+            <Link key={`his_${idx}`} to={`search/${item}/10`}>
               <div className={`${linkEffectSmall} min-h-[50px]`}>
                 <div className="md:mx-auto max-w-screen-xl  p-5 pt-3 pb-0">
                   <p>{item}</p>

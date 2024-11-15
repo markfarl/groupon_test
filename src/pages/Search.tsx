@@ -77,10 +77,12 @@ export default function Search() {
     }
   }, [debounceValue]);
 
-  // when user lands
+  // When user lands
   useEffect(() => {
-    fetchSearch({ searchVal: searchTerm, limitchange: Number(limit) })
-  }, [searchTerm])
+    if(searchNavData.searchTerm !== searchVal){
+      fetchSearch({ searchVal: searchTerm, limitchange: Number(limit) })
+    } 
+  }, [])
 
   // When user types show loading
   useEffect(() => {
