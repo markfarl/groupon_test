@@ -24,15 +24,15 @@ export default function Home() {
     <div className="min-h-full bg-home-light dark:bg-home-dark">
       <header className="p-10 md:mb-20">
         <img src={logo} alt="image logo" className="mx-auto dark:hidden block" />
-        <img src={logoDark} alt="image logo" className="mx-auto hidden dark:block" />
+        <img src={logoDark} alt="image logo dark" className="mx-auto hidden dark:block" />
         <p className="text-center mt-5">The Lightweight Wikipedia interface....</p>
       </header>
 
-      <div className="mx-auto max-w-[400px]">
+      <div className="mx-auto SearchBar max-w-[400px]">
         <SearchBar callback={navigateSearchHandle} />
       </div>
 
-      <div className="mx-auto mt-5 md:mt-10 w-[85px]">
+      <div className="mx-auto DarkMode mt-5 md:mt-10 w-[85px]">
         <DarkMode />
       </div>
 

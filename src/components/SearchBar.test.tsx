@@ -15,7 +15,6 @@ vi.mock('@/contexts/SearchNavContext', () => ({
 }))
 
 
-
 const HeaderParam = {
 	callback: vi.fn() as (arg0: string) => void,
 	onTypeCallback: vi.fn() as (arg0: string) => void,
