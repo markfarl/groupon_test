@@ -16,18 +16,18 @@ Groupon_serve built in node.js which is hosted on AWS instance from a docker ima
 
 ## Installation
 
-Ton install locally please follow these 
+To install and run locally.
 ```sh
-yarn
+yarn && yarn dev
+```
+or
+
+```sh
+npm install && npm run dev
 ```
 
-To start development version.
-
-```sh
-yarn dev
-```
 **NOTE**
-The endpoint is hosted AWS EC2 instance from [groupon_test_server](https://github.com/markfarl/groupon_test_server) to build local you can uncomment the URL in [main/src/constants/api.ts](https://github.com/markfarl/groupon_test/blob/main/src/constants/api.ts)
+The endpoint is hosted AWS EC2 instance from [groupon_test_server](https://github.com/markfarl/groupon_test_server) if build a local server you can uncomment the URL in [main/src/constants/api.ts](https://github.com/markfarl/groupon_test/blob/main/src/constants/api.ts)
 
 ## Design
 
